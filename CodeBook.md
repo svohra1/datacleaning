@@ -14,7 +14,63 @@ From this raw data, obtained at the UCI Machine Learning Repository, an R script
 
 *source("run_analysis.R")*
 
-The script executes a writes a new file called tidy_data_project.txt into the R working directory.
+The script executes and writes a new file called tidy_data_project.txt into the R working directory. The new dataset has 180 records with 88 columns.
+
 
 Code Book
 =========
+
+The new tidy data is contained in one file called tidy_data_project.txt. It has 180 records. The original raw data contained data on 30 volunteers and that data was partitioned into two data sets, training data and test data. In the tidy data set all data was merged.
+
+The 30 volunteers were monitored over 6 activities: (WALKING, WALKING_UPSTAIRS, WALKING_DOWNSTAIRS, SITTING, STANDING, LAYING). The raw data contained a 561-feature vector with time and frequency domain variables. The new tidy data selected only those variables that contained the following patterns in their variable names: "Mean", "mean", or "std". These patterns correspond to variable names that measure, in some way, mean or standard deviation of a measurement. The selected variable names were 'cleaned' by removing substituting ',' for '.' and '-' for '_' and removing '(' and ')'.
+
+This reduced the variables in the tidy data from 561 to 86 measurement variables. For each of the 30 volunteers, the data was summarized by taking the **mean** of each of the 86 measurements across each of the 6 activities. Hence, 30 volunteers times 6 activities gives 180 records.
+
+The tidy data contains:
+
+180 records (30 volunteers times 6 activities)
+88 columns (1 subject identifier, 1 activity label, and 86 mesurements variables) 
+
+The mesurement variables, or features are described as follows:
+
+The features selected for this database come from the accelerometer and gyroscope 3-axial raw signals tAcc-XYZ and tGyro-XYZ. These time domain signals (prefix 't' to denote time) were captured at a constant rate of 50 Hz. Then they were filtered using a median filter and a 3rd order low pass Butterworth filter with a corner frequency of 20 Hz to remove noise. Similarly, the acceleration signal was then separated into body and gravity acceleration signals (tBodyAcc-XYZ and tGravityAcc-XYZ) using another low pass Butterworth filter with a corner frequency of 0.3 Hz. 
+
+Subsequently, the body linear acceleration and angular velocity were derived in time to obtain Jerk signals (tBodyAccJerk-XYZ and tBodyGyroJerk-XYZ). Also the magnitude of these three-dimensional signals were calculated using the Euclidean norm (tBodyAccMag, tGravityAccMag, tBodyAccJerkMag, tBodyGyroMag, tBodyGyroJerkMag). 
+
+Finally a Fast Fourier Transform (FFT) was applied to some of these signals producing fBodyAcc-XYZ, fBodyAccJerk-XYZ, fBodyGyro-XYZ, fBodyAccJerkMag, fBodyGyroMag, fBodyGyroJerkMag. (Note the 'f' to indicate frequency domain signals). 
+
+These signals were used to estimate variables of the feature vector for each pattern:  
+'-XYZ' is used to denote 3-axial signals in the X, Y and Z directions.
+
+tBodyAcc-XYZ
+tGravityAcc-XYZ
+tBodyAccJerk-XYZ
+tBodyGyro-XYZ
+tBodyGyroJerk-XYZ
+tBodyAccMag
+tGravityAccMag
+tBodyAccJerkMag
+tBodyGyroMag
+tBodyGyroJerkMag
+fBodyAcc-XYZ
+fBodyAccJerk-XYZ
+fBodyGyro-XYZ
+fBodyAccMag
+fBodyAccJerkMag
+fBodyGyroMag
+fBodyGyroJerkMag
+
+The set of variables that were estimated from these signals are: 
+
+mean(): Mean value
+std(): Standard deviation
+meanFreq(): Weighted average of the frequency components to obtain a mean frequency
+angle(): Angle between to vectors.
+
+Additional vectors obtained by averaging the signals in a signal window sample. These are used on the angle() variable:
+
+gravityMean
+tBodyAccMean
+tBodyAccJerkMean
+tBodyGyroMean
+tBodyGyroJerkMean
